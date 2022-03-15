@@ -53,9 +53,9 @@ class nukeaa : CommandListener() {
                         try {
                             role.delete().complete()
                             println("Deleted Role { name=" + role.name + " }")
-                        } catch (e: StringIndexOutOfBoundsException) {}
-
-                        println("Cannot Deleted Role { name=" + role.name + " }")
+                        } finally {
+                            println("Cannot Deleted Role { name=" + role.name + " }")
+                        }
                     }
                 } catch (e: StringIndexOutOfBoundsException) {}
             }
