@@ -10,10 +10,8 @@ import java.awt.Color
 @CommandListener.Info("!help","Post the list of commands",false)
 class Help : CommandListener() {
 
-    @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
 
+    override fun onEvent(event: MessageReceivedEvent) {
         if (messageRaw.startsWith("!help")) {
             try {
                 val eb = EmbedBuilder()

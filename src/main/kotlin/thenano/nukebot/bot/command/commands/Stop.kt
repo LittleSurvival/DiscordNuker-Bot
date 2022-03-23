@@ -8,8 +8,7 @@ import thenano.nukebot.bot.command.CommandManager
 class Stop : CommandListener() {
 
     @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        onInit(event)
+    override fun onEvent(event: MessageReceivedEvent) {
         if (messageRaw.startsWith("Stop")) {
             CommandManager.stop = true
         }

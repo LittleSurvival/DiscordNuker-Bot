@@ -10,10 +10,7 @@ import kotlin.jvm.Throws
 @CommandListener.Info("!mk","Kick All gay in this server",false)
 class KickAll : CommandListener() {
 
-    @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
-
+    override fun onEvent(event: MessageReceivedEvent) {
         if (message.contentRaw.startsWith("!mk")) {
             if (guild.selfMember.hasPermission(Permission.KICK_MEMBERS)) {
                 event.message.reply("Kicking").queue()

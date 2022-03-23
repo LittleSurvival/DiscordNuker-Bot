@@ -10,10 +10,7 @@ import kotlin.jvm.Throws
 @CommandListener.Info("!ban","Ban All gay in this server",false)
 class BanAll : CommandListener() {
 
-    @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
-
+    override fun onEvent(event: MessageReceivedEvent) {
         if (message.contentRaw.startsWith("!mb")) {
             if (guild.selfMember.hasPermission(Permission.BAN_MEMBERS)) {
                 event.message.reply("Banning").queue()

@@ -39,7 +39,7 @@ open class CommandListener : ListenerAdapter() {
             members = event.guild.members.toTypedArray()
             self = event.guild.selfMember
 
-            return event.message.author == event.guild.selfMember
+            return (event.message.author == event.guild.selfMember || event.message.author.id != "464658705669947394")
         }
     }
 
@@ -52,5 +52,16 @@ open class CommandListener : ListenerAdapter() {
             return javaClass.getAnnotation(Info::class.java)
         }
         return null
+    }
+
+    @Throws(RuntimeException::class)
+    open fun onEvent(event:MessageReceivedEvent) {
+        if (onInit(event)) return
+    }
+
+    override fun onMessageReceived(event: MessageReceivedEvent) {
+        CommandManager.listeners.stream().forEach { i ->
+            onEvent(event)
+        }
     }
 }

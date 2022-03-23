@@ -8,9 +8,7 @@ import kotlin.random.Random
 @CommandListener.Info("!sr <roleName>","Create lots of role and tag all gay in this server",false)
 class SpamRole : CommandListener() {
     @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
-
+    override fun onEvent(event: MessageReceivedEvent) {
         if (messageRaw.startsWith("!sr")) {
             try {
                 message.reply("Spamming Role").queue()

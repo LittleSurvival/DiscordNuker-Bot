@@ -9,10 +9,7 @@ import java.time.Duration
 @CommandListener.Info("!mt","Timeout all gay in this server",false)
 class MassTimeOut : CommandListener() {
 
-    @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (onInit(event)) return
-
+    override fun onEvent(event: MessageReceivedEvent) {
         if (message.contentRaw.startsWith("!mt")) {
             try {
                 event.message.reply("Massing TimeOut").queue()

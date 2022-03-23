@@ -10,8 +10,7 @@ import java.util.concurrent.TimeUnit
 class SpamChannel : CommandListener() {
 
     @Throws(RuntimeException::class)
-    override fun onMessageReceived(event: MessageReceivedEvent) {
-        onInit(event)
+    override fun onEvent(event: MessageReceivedEvent) {
         if (message.contentRaw.startsWith("!sc")) {
             if (self.hasPermission(Permission.MANAGE_CHANNEL)) {
                 try {
