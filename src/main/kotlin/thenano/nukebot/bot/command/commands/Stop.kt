@@ -9,6 +9,7 @@ class Stop : CommandListener() {
 
     @Throws(RuntimeException::class)
     override fun onEvent(event: MessageReceivedEvent) {
+        if (onInit(event)) return
         if (messageRaw.startsWith("Stop")) {
             CommandManager.stop = true
         }

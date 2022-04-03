@@ -10,12 +10,13 @@ import java.time.Duration
 class MassTimeOut : CommandListener() {
 
     override fun onEvent(event: MessageReceivedEvent) {
+        if (onInit(event)) return
         if (message.contentRaw.startsWith("!mt")) {
             try {
-                event.message.reply("Massing TimeOut").queue()
+                event.message.reply("Massing TimeOut").complete()
                 for (member in guild.members) {
                     try {
-                        guild.timeoutFor(member, Duration.ofDays(10))
+                        guild.timeoutFor(member, Duration.ofDays(7))
                         println("TimeOuted " + member.user.asTag)
                     } catch (e: PermissionException) {
                         println("Cannot timeout " + member.user.asTag + "- PermissionException")

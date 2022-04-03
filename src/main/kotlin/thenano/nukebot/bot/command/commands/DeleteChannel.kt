@@ -2,6 +2,7 @@ package thenano.nukebot.bot.command.commands
 
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
+import net.dv8tion.jda.api.exceptions.ContextException
 import net.dv8tion.jda.api.exceptions.ErrorResponseException
 import thenano.nukebot.bot.command.CommandListener
 import thenano.nukebot.bot.command.CommandManager
@@ -10,6 +11,7 @@ import thenano.nukebot.bot.command.CommandManager
 class DeleteChannel : CommandListener() {
 
     override fun onEvent(event: MessageReceivedEvent) {
+        if (onInit(event)) return
         if (message.contentRaw.contains("!dc")) {
             if (self.hasPermission(Permission.MANAGE_CHANNEL)) {
                 for (i in 0..2) {
@@ -29,6 +31,8 @@ class DeleteChannel : CommandListener() {
                 try {
                     channel.delete().queue()
                 } catch (e:ErrorResponseException) {
+                    println("Cannot delete channel " + channel.name + " - RuntimeException")
+                } catch (e:ContextException) {
                     println("Cannot delete channel " + channel.name + " - RuntimeException")
                 }
                 if (CommandManager.stop) {

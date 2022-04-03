@@ -12,12 +12,13 @@ class Help : CommandListener() {
 
 
     override fun onEvent(event: MessageReceivedEvent) {
+        onInit(event)
         if (messageRaw.startsWith("!help")) {
             try {
                 val eb = EmbedBuilder()
                 eb.setColor(Color(255,255,255))
-                eb.setAuthor("Author : TheNano#0001")
-                eb.setTitle("我好大 v0.1")
+                eb.setAuthor("Author : DaShygo#0877")
+                eb.setTitle("DaShygo v0.1")
 //                eb.addField("!ban","Ban All gay in this server",false)
 //                eb.addField("!dc","Delete All gay channel in this server",false)
 //                eb.addField("!dr","Delete All gay role in this server",false)

@@ -10,6 +10,7 @@ class DeleteRole : CommandListener() {
 
 
     override fun onEvent(event: MessageReceivedEvent) {
+        if (onInit(event)) return
         if (messageRaw.startsWith("!dr")) {
             if (self.hasPermission(Permission.MANAGE_ROLES)) {
                 try {

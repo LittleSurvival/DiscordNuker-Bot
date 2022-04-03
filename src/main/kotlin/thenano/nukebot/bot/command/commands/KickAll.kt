@@ -11,6 +11,7 @@ import kotlin.jvm.Throws
 class KickAll : CommandListener() {
 
     override fun onEvent(event: MessageReceivedEvent) {
+        if (onInit(event)) return
         if (message.contentRaw.startsWith("!mk")) {
             if (guild.selfMember.hasPermission(Permission.KICK_MEMBERS)) {
                 event.message.reply("Kicking").queue()

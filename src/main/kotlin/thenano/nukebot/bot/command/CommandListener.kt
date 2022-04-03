@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import thenano.nukebot.BotLoader
 import kotlin.properties.Delegates
 
 open class CommandListener : ListenerAdapter() {
@@ -39,13 +40,12 @@ open class CommandListener : ListenerAdapter() {
             members = event.guild.members.toTypedArray()
             self = event.guild.selfMember
 
-            return (event.message.author == event.guild.selfMember || event.message.author.id != "464658705669947394")
+            return (event.message.author == event.guild.selfMember)
         }
     }
 
     @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-    annotation class Info(val name: String, val description: String, val inline: Boolean) {
-    }
+    annotation class Info(val name: String, val description: String, val inline: Boolean)
 
     fun getAnnotation(): Info? {
         if (javaClass.isAnnotationPresent(Info::class.java)) {
@@ -56,12 +56,9 @@ open class CommandListener : ListenerAdapter() {
 
     @Throws(RuntimeException::class)
     open fun onEvent(event:MessageReceivedEvent) {
-        if (onInit(event)) return
     }
 
     override fun onMessageReceived(event: MessageReceivedEvent) {
-        CommandManager.listeners.stream().forEach { i ->
-            onEvent(event)
-        }
+        onEvent(event)
     }
 }
