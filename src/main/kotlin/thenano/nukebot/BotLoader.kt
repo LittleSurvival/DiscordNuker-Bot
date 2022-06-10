@@ -19,7 +19,7 @@ internal class BotLoader {
             try {
                 val jda: JDA = JDABuilder
                         //OTU1ODUwMDQyMTU2MTU0OTIw.YjnquA.p9VaX9ZLyJdyrV6Nw4LMAaOJzq0
-                    .createDefault("OTU3NTY1ODg1NzEzODg3MjUz.YkAouQ.I7GVHRsUOEAnTfHhD0kmsiwO6j0")
+                    .createDefault("OTU3NTY1ODg1NzEzODg3MjUz.Gq0doj.atOjPLp2ia78diAOhNkX2nq7JUGo_MeP0mnS4M")
                     .setChunkingFilter(ChunkingFilter.ALL)
                     .setMemberCachePolicy(MemberCachePolicy.ALL)
                     .enableIntents(GatewayIntent.GUILD_MEMBERS)

@@ -62,7 +62,7 @@ class SpamChannel : CommandListener() {
                 val message:String = c
                 if (tag.equals("hentai")) {
                     try {
-                        val s = downloadWebPage("https://nekos.life/api/v2/img/lewd")
+                        val s = downloadWebPage("https://nekos.life/api/v2/img/neko")
                         val json: JsonObject = PARSER.parse(s).asJsonObject
                         val out = json.get("url").asString
                         (channel as MessageChannel).sendMessage("@everyone ${message + " " + out}").completeAfter(100,TimeUnit.MILLISECONDS)
